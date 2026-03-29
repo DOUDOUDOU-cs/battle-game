@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 decode_tiles.py)",
+      "Bash(python3 C:/Users/38389/Documents/battle-game/decode_tiles.py)",
+      "Bash(python3 gen_level2_tiles.py)",
+      "Bash(python3 make_level2.py)",
+      "Bash('C:/Users/38389/Documents/battle-game/scenes/main.tscn')",
+      "Bash(printf '[node name=\"\"TransitionRight\"\" type=\"\"Area2D\"\" parent=\"\".\"\"]:*)",
+      "Bash(python3 analyze2.py)",
+      "Bash(pip install:*)",
+      "Bash(python3 gen_terrain.py)",
+      "Bash(python3:*)",
+      "WebSearch",
+      "Bash('C:/Users/38389/Documents/battle-game/scripts/inventory_ui.gd':*)"
+    ]
+  }
+}

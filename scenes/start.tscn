@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8f4uk5po0dpx"]
+
+[ext_resource type="Texture2D" uid="uid://m45jkyekqj5l" path="res://assets/background.png" id="1_jaeev"]
+[ext_resource type="Script" uid="uid://bvrrmdirh72po" path="res://scripts/start.gd" id="1_kdmts"]
+[ext_resource type="FontFile" uid="uid://cg38sqom5av61" path="res://assets/font/BaDingShiWeiTi-16.ttf" id="2_bodal"]
+[ext_resource type="Texture2D" uid="uid://hi5rnq2yjnpr" path="res://assets/藤蔓.png" id="2_u80x2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u80x2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jaeev"]
+bg_color = Color(0, 0, 0, 0.4)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8745098, 0.84313726, 0, 0.54901963)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdmts"]
+bg_color = Color(1, 0.84313726, 0, 0.26666668)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.84313726, 0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kdmts")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -951.0
+offset_top = -2824.0
+offset_right = 949.0
+offset_bottom = 626.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jaeev")
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(100, 150)
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_bodal")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxTexture_u80x2")
+text = "骑士战场"
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+texture = ExtResource("2_u80x2")
+
+[node name="Space" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_jaeev")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kdmts")
+text = "开始游戏"
+
+[node name="Space2" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "WASD / 方向键 移动    空格 跳跃    左键 攻击    P 暂停\nI 背包    滚轮 切换物品    Q 丢弃物品"
+horizontal_alignment = 1
