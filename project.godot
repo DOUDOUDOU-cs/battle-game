@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="battle_game"
-run/main_scene="uid://c8f4uk5po0dpx"
+run/main_scene="res://scenes/ui/start.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Inventory="*res://scripts/inventory.gd"
-InventoryUI="*res://scripts/inventory_ui.gd"
+Inventory="*res://scripts/inventory/inventory.gd"
+InventoryUI="*res://scripts/inventory/inventory_ui.gd"
+WaveManager="*res://scripts/core/wave_manager.gd"
 
 [input]
 

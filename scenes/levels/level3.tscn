@@ -1,0 +1,169 @@
+[gd_scene load_steps=11 format=4 uid="uid://c8f4uk5po0dpx"]
+
+[ext_resource type="PackedScene" uid="uid://xi656aa0a7u6" path="res://scenes/player/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" path="res://scripts/levels/level3.gd" id="1_sugp2"]
+[ext_resource type="Texture2D" uid="uid://b2bed2mcai54e" path="res://assets/background.webp" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://u7a0o276jk3t" path="res://assets/avatar_frame_gold_v2.png" id="3_tefeu"]
+[ext_resource type="TileSet" uid="uid://1nnrd10dqa20" path="res://assets/tileset/tileset_GrassTile.tres" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://ba6bna6twwmmq" path="res://assets/IDLE.png" id="4_o6xl0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+bg_color = Color(0.039215688, 0.019607844, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(0.6666667, 0.101960786, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
+size = Vector2(3000, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trans"]
+size = Vector2(40, 800)
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_sugp2")
+
+[node name="Player" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(150, 400)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 34.0
+offset_top = -1.0
+offset_right = 1954.0
+offset_bottom = 1079.0
+
+[node name="HUDFrame" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 150.0
+
+[node name="Frame" type="TextureRect" parent="CanvasLayer/Control/HUDFrame"]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 570.0
+scale = Vector2(0.12, 0.28)
+texture = ExtResource("3_tefeu")
+
+[node name="Avatar" type="TextureRect" parent="CanvasLayer/Control/HUDFrame"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 45.0
+offset_right = 76.0
+offset_bottom = 115.0
+texture = ExtResource("4_o6xl0")
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control/HUDFrame"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 120.0
+offset_right = 84.0
+offset_bottom = 147.0
+scale = Vector2(1, 0.5)
+theme_override_styles/background = SubResource("StyleBoxFlat_tefeu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_o6xl0")
+
+[node name="WaveLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 110.0
+offset_right = 145.0
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu"]
+process_mode = 3
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.65882355)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -103.5
+offset_right = 100.0
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="PauseLabel" type="Label" parent="CanvasLayer/PauseMenu/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "暂停"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "继续"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "退出游戏"
+
+[node name="NightOverlay" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.316, 0.391, 0.272, 0.28)
+
+[node name="KillZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(960, 700)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(960, 300)
+scale = Vector2(3, 2)
+texture = ExtResource("3_jyhfs")
+
+[node name="TransitionLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft"]
+position = Vector2(40, 400)
+shape = SubResource("RectangleShape2D_trans")
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+tile_set = ExtResource("4_jyhfs")
